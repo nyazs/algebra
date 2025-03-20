@@ -15,7 +15,7 @@
         }
         .navbar {
             display: flex;
-            justify-content: start; /* Aligns items to the left */
+            justify-content: start;
             align-items: center;
             background: rgba(0, 0, 0, 0.8);
             padding: 15px 50px;
@@ -27,7 +27,7 @@
         .logo-container {
             display: flex;
             align-items: center;
-            margin-right: 20px; /* Adds spacing between logo and links */
+            margin-right: 20px;
         }
         .logo-container img {
             width: 40px;
@@ -35,7 +35,7 @@
             margin-right: 10px;
         }
         .navbar div {
-            margin-left: 20px; /* Moves navbar selections to the left */
+            margin-left: 20px;
         }
         .navbar a {
             padding: 10px 15px;
@@ -84,7 +84,6 @@
             border-radius: 5px;
             background: rgba(0, 0, 0, 0.7);
             color: white;
-            cursor: pointer;
         }
         .proxy-btn {
             padding: 10px 15px;
@@ -105,7 +104,7 @@
 
     <div class="navbar">
         <div class="logo-container">
-            <img src="logo.png" alt="Logo"> <!-- Replace 'logo.png' with your actual logo path -->
+            <img src="logo.png" alt="Logo">
             <strong>Algebra</strong>
         </div>
         <div>
@@ -121,7 +120,6 @@
         <h1>Algebra</h1>
         <p>Enjoy our limitless selection of entertainment, games, and more!</p>
 
-        <!-- Proxy URL Input -->
         <div class="proxy-box">
             <input type="text" id="proxyInput" class="proxy-input" placeholder="Enter URL...">
             <button class="proxy-btn" onclick="useProxy()">Go</button>
@@ -134,7 +132,7 @@
         function useProxy() {
             let url = document.getElementById('proxyInput').value.trim();
             if (url) {
-                let proxyUrl = `https://www.google.com/search?q=${encodeURIComponent(url)}`;
+                let proxyUrl = `/proxy/${btoa(url)}`; // Encoding URL to prevent direct filtering
                 window.location.href = proxyUrl;
             }
         }
