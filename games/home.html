@@ -84,6 +84,7 @@
             border-radius: 5px;
             background: rgba(0, 0, 0, 0.7);
             color: white;
+            cursor: pointer;
         }
         .proxy-btn {
             padding: 10px 15px;
@@ -129,11 +130,15 @@
     <div class="footer">© Copyright Algebra 2025</div>
 
     <script>
+        let ws = new WebSocket("ws://your_server_ip:3000");
+
+        ws.onopen = () => console.log("WebSocket Connected!");
+        ws.onmessage = (event) => console.log("Response:", event.data);
+
         function useProxy() {
             let url = document.getElementById('proxyInput').value.trim();
             if (url) {
-                let proxyUrl = `/proxy/${btoa(url)}`; // Encoding URL to prevent direct filtering
-                window.location.href = proxyUrl;
+                ws.send(JSON.stringify({ url }));
             }
         }
     </script>
